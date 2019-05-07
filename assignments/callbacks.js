@@ -19,7 +19,7 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
   // Function invocation 
   firstItem(items, function(first) {
-    console.log("firstItem: ", first)
+    console.log(`firstItem: ${first}`)
   });
 
 
@@ -36,7 +36,7 @@ function lastItem(arr, cb) {
   return cb(arr[arr.length-1]);
 }
 lastItem(items,function(last){
-  console.log("Last Item: ", last)
+  console.log(`Last Item: ${last}`)
 });
 
   // sumNums adds two numbers (x, y) and passes the result to the callback.
@@ -44,7 +44,7 @@ function sumNums(x, y, cb) {
   return cb(x+y);
 }
 sumNums(5,10,function(sum){
-  console.log("Sum: ", sum)
+  console.log(`Sum: ${sum}`)
 });
 
   // multiplyNums multiplies two numbers and passes the result to the callback.
@@ -52,7 +52,7 @@ function multiplyNums(x, y, cb) {
   return cb(x*y);
 }
 multiplyNums(3,4,function(multiply){
-  console.log("Product: ", multiply)
+  console.log(`Product: ${multiply}`)
 });
 
   // contains checks if an item is present inside of the given array/list.
@@ -65,13 +65,24 @@ function contains(item, list, cb) {
   }
 }
 contains("Notebook",items,function(item){
-  console.log("Includes: ", item)
+  console.log(`Duplicate: ${item}`)
 });
 
-/* STRETCH PROBLEM */
 
-function removeDuplicates(array, cb) {
+const places = ['San Francisco', 'New York', 'Los Angeles', 'San Francisco'];
+/* STRETCH PROBLEM */
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
-}
+function removeDuplicates(array, cb) {
+  let noDupes = array.filter(function(item,index){
+    if (array.indexOf(item)>=index){
+      return true;
+    }
+  })
+  return cb(noDupes);
+} 
+
+removeDuplicates(places, function(place){
+  console.log("No diplicate: ", place)
+});
